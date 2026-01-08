@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -15,20 +16,26 @@
         body {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 0;
+            margin: 0;
             color: #333;
+            position: fixed;
+            width: 100%;
+            height: 100%;
         }
 
         .app-container {
+            width: 100%;
+            height: 100%;
             max-width: 450px;
             margin: 0 auto;
             background: white;
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border-radius: 0;
+            box-shadow: 0 0 40px rgba(0,0,0,0.3);
             overflow: hidden;
-            min-height: 95vh;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
 
         .header {
@@ -36,6 +43,7 @@
             color: white;
             padding: 25px 20px;
             text-align: center;
+            flex-shrink: 0;
         }
 
         .header h1 {
@@ -50,25 +58,30 @@
         }
 
         .balance-section {
-            padding: 20px;
+            padding: 25px 20px;
             text-align: center;
             background: #f8f9ff;
             margin: 15px;
-            border-radius: 18px;
-            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.15);
+            flex-shrink: 0;
         }
 
         .balance-label {
             font-size: 14px;
             color: #666;
             margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
 
         .balance-amount {
-            font-size: 42px;
+            font-size: 48px;
             font-weight: 700;
             color: #333;
-            line-height: 1;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
         .balance-positive {
@@ -82,22 +95,28 @@
         .stats {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            gap: 15px;
             padding: 0 20px;
             margin-bottom: 20px;
+            flex-shrink: 0;
         }
 
         .stat-card {
             background: white;
-            padding: 18px;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 20px;
+            border-radius: 18px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
             text-align: center;
             border: 1px solid #f0f0f0;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
         }
 
         .stat-value {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 600;
             margin-bottom: 5px;
         }
@@ -106,7 +125,8 @@
             font-size: 12px;
             color: #666;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            font-weight: 500;
         }
 
         .income {
@@ -121,35 +141,42 @@
             display: flex;
             background: #f8f9ff;
             margin: 0 20px;
-            border-radius: 12px;
-            padding: 4px;
+            border-radius: 15px;
+            padding: 6px;
             margin-bottom: 20px;
+            flex-shrink: 0;
         }
 
         .tab {
             flex: 1;
             text-align: center;
-            padding: 12px;
-            border-radius: 10px;
-            font-weight: 500;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
             color: #666;
+            font-size: 15px;
         }
 
         .tab.active {
             background: white;
             color: #667eea;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.25);
+        }
+
+        .tab:hover:not(.active) {
+            background: rgba(255,255,255,0.5);
         }
 
         .form-section {
             padding: 0 20px;
             margin-bottom: 25px;
+            flex-shrink: 0;
         }
 
         .input-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .input-group label {
@@ -157,113 +184,134 @@
             font-size: 14px;
             color: #666;
             margin-bottom: 8px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .input-group input,
         .input-group select {
             width: 100%;
-            padding: 16px;
+            padding: 18px;
             border: 2px solid #e5e7eb;
-            border-radius: 12px;
+            border-radius: 15px;
             font-size: 16px;
-            transition: border-color 0.3s;
+            transition: all 0.3s;
+            background: white;
         }
 
         .input-group input:focus,
         .input-group select:focus {
             outline: none;
             border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
 
         .type-buttons {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 15px;
+            gap: 12px;
+            margin-bottom: 20px;
         }
 
         .type-button {
-            padding: 16px;
+            padding: 18px;
             border: 2px solid #e5e7eb;
-            border-radius: 12px;
+            border-radius: 15px;
             text-align: center;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
             background: white;
+            font-size: 16px;
         }
 
         .type-button.active {
             border-color: #667eea;
-            background: #f8f9ff;
-            color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
         .income-button.active {
             border-color: #10b981;
-            background: #f0fdf4;
-            color: #10b981;
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
         }
 
         .expense-button.active {
             border-color: #ef4444;
-            background: #fef2f2;
-            color: #ef4444;
+            background: linear-gradient(135deg, #ef4444 0%, #f87171 100%);
         }
 
         .submit-button {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            padding: 18px;
-            border-radius: 12px;
-            font-size: 16px;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 17px;
             font-weight: 600;
             cursor: pointer;
             width: 100%;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
         }
 
         .submit-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
         }
 
         .transactions-section {
             flex: 1;
             padding: 0 20px 20px;
             overflow-y: auto;
+            min-height: 0;
         }
 
         .transactions-section h3 {
             font-size: 18px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             color: #333;
+            font-weight: 600;
+            padding-left: 5px;
         }
 
         .transaction-list {
             list-style: none;
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 5px;
         }
 
         .transaction-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px;
+            padding: 18px;
             background: white;
-            border-radius: 12px;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            border-left: 4px solid;
+            border-radius: 15px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-left: 5px solid;
+            transition: transform 0.2s;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .transaction-item:hover {
+            transform: translateX(5px);
         }
 
         .transaction-item.income {
             border-left-color: #10b981;
+            background: linear-gradient(to right, #f0fdf4, white);
         }
 
         .transaction-item.expense {
             border-left-color: #ef4444;
+            background: linear-gradient(to right, #fef2f2, white);
         }
 
         .transaction-info {
@@ -271,18 +319,20 @@
         }
 
         .transaction-category {
-            font-weight: 500;
-            margin-bottom: 5px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 16px;
+            color: #333;
         }
 
         .transaction-date {
-            font-size: 12px;
-            color: #999;
+            font-size: 13px;
+            color: #888;
         }
 
         .transaction-amount {
-            font-weight: 600;
-            font-size: 18px;
+            font-weight: 700;
+            font-size: 20px;
         }
 
         .income-amount {
@@ -295,60 +345,88 @@
 
         .no-transactions {
             text-align: center;
-            padding: 40px 20px;
+            padding: 60px 20px;
             color: #999;
+            font-size: 16px;
+            background: #f9fafb;
+            border-radius: 15px;
+            margin-top: 20px;
         }
 
         .categories-section {
+            flex: 1;
             padding: 0 20px 20px;
+            overflow-y: auto;
         }
 
         .category-list {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            gap: 12px;
         }
 
         .category-item {
-            padding: 12px;
-            background: #f8f9ff;
-            border-radius: 12px;
+            padding: 20px 10px;
+            background: white;
+            border-radius: 15px;
             text-align: center;
             font-size: 14px;
             cursor: pointer;
             transition: all 0.3s;
             border: 2px solid transparent;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
         }
 
         .category-item:hover {
-            background: #667eea;
-            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
         }
 
         .category-item.active {
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border-color: #764ba2;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .category-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .category-name {
+            font-weight: 500;
         }
 
         .loading {
             text-align: center;
-            padding: 40px;
+            padding: 60px;
             color: #667eea;
+            font-size: 18px;
+            font-weight: 500;
         }
 
         .notification {
             position: fixed;
             top: 20px;
             right: 20px;
-            background: #10b981;
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
             color: white;
-            padding: 16px 24px;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+            padding: 20px 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
             transform: translateX(150%);
-            transition: transform 0.3s;
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             z-index: 1000;
+            max-width: 300px;
+            font-weight: 500;
         }
 
         .notification.show {
@@ -356,7 +434,8 @@
         }
 
         .notification.error {
-            background: #ef4444;
+            background: linear-gradient(135deg, #ef4444 0%, #f87171 100%);
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.4);
         }
 
         @keyframes fadeIn {
@@ -364,8 +443,36 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
         .transaction-item {
-            animation: fadeIn 0.3s ease-out;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .sync-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+
+        .sync-button:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(180deg);
         }
 
         .month-selector {
@@ -373,27 +480,73 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 20px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            flex-shrink: 0;
         }
 
         .month-button {
-            background: none;
+            background: #f8f9ff;
             border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             font-size: 20px;
             color: #667eea;
             cursor: pointer;
-            padding: 5px 10px;
-            border-radius: 8px;
-            transition: background 0.3s;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .month-button:hover {
-            background: #f8f9ff;
+            background: #667eea;
+            color: white;
+            transform: scale(1.1);
         }
 
         .current-month {
-            font-weight: 500;
+            font-weight: 600;
             color: #333;
+            font-size: 16px;
+        }
+
+        /* Стили для скроллбара */
+        .transaction-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .transaction-list::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+
+        .transaction-list::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 3px;
+        }
+
+        .transaction-list::-webkit-scrollbar-thumb:hover {
+            background: #764ba2;
+        }
+
+        /* Мобильная оптимизация */
+        @media (max-width: 480px) {
+            .app-container {
+                border-radius: 0;
+            }
+            
+            .balance-amount {
+                font-size: 42px;
+            }
+            
+            .category-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stat-value {
+                font-size: 24px;
+            }
         }
     </style>
 </head>
@@ -401,6 +554,9 @@
     <div class="app-container">
         <!-- Header -->
         <div class="header">
+            <button class="sync-button" onclick="syncWithBot()">
+                🔄
+            </button>
             <h1>CoinKeeper</h1>
             <div class="subtitle">Учет расходов и доходов</div>
         </div>
@@ -430,7 +586,7 @@
             <div class="tab" onclick="switchTab('categories')">Категории</div>
         </div>
 
-        <!-- Month Selector (hidden by default) -->
+        <!-- Month Selector -->
         <div class="month-selector" id="monthSelector" style="display: none;">
             <button class="month-button" onclick="changeMonth(-1)">←</button>
             <span class="current-month" id="currentMonth">Январь 2024</span>
@@ -493,7 +649,8 @@
 
         <!-- Loading Indicator -->
         <div class="loading" id="loading" style="display: none;">
-            Загрузка данных...
+            <div>Загрузка данных...</div>
+            <div style="font-size: 40px; margin-top: 20px;">⌛</div>
         </div>
     </div>
 
@@ -502,14 +659,10 @@
 
     <script>
         // Telegram WebApp API
-        const tg = window.Telegram.WebApp;
-        
-        // Инициализация
-        tg.ready();
-        tg.expand();
+        const tg = window.Telegram?.WebApp;
         
         // Глобальные переменные
-        let currentUserData = {
+        let userData = {
             balance: 0,
             transactions: [],
             categories: {},
@@ -521,52 +674,148 @@
         
         // Категории с иконками
         const categories = [
-            { id: 'еда', name: '🍕 Еда' },
-            { id: 'транспорт', name: '🚗 Транспорт' },
-            { id: 'развлечения', name: '🎬 Развлечения' },
-            { id: 'покупки', name: '🛍️ Покупки' },
-            { id: 'здоровье', name: '🏥 Здоровье' },
-            { id: 'образование', name: '📚 Образование' },
-            { id: 'квартира', name: '🏠 Квартира' },
-            { id: 'зарплата', name: '💰 Зарплата' },
-            { id: 'другое', name: '📌 Другое' }
+            { id: 'еда', name: 'Еда', icon: '🍕' },
+            { id: 'транспорт', name: 'Транспорт', icon: '🚗' },
+            { id: 'развлечения', name: 'Развлечения', icon: '🎬' },
+            { id: 'покупки', name: 'Покупки', icon: '🛍️' },
+            { id: 'здоровье', name: 'Здоровье', icon: '🏥' },
+            { id: 'образование', name: 'Образование', icon: '📚' },
+            { id: 'квартира', name: 'Квартира', icon: '🏠' },
+            { id: 'зарплата', name: 'Зарплата', icon: '💰' },
+            { id: 'кофе', name: 'Кофе', icon: '☕' },
+            { id: 'обед', name: 'Обед', icon: '🍽️' },
+            { id: 'продукты', name: 'Продукты', icon: '🛒' },
+            { id: 'другое', name: 'Другое', icon: '📌' }
         ];
-        
+
         // Инициализация приложения
         document.addEventListener('DOMContentLoaded', function() {
-            loadUserData();
-            setupCategoryButtons();
+            initApp();
         });
-        
-        // Загрузка данных пользователя
-        function loadUserData() {
+
+        // Инициализация приложения
+        function initApp() {
+            if (tg) {
+                // Если в Telegram
+                tg.ready();
+                tg.expand();
+                loadUserDataFromBot();
+            } else {
+                // Если не в Telegram, используем локальное хранилище
+                loadFromLocalStorage();
+                showNotification('Используется локальное хранилище', false);
+            }
+            
+            setupCategoryButtons();
+            updateCurrentMonth();
+        }
+
+        // Загрузка данных из бота
+        function loadUserDataFromBot() {
             showLoading(true);
             
-            // Отправляем запрос на получение данных пользователя
+            // Отправляем запрос боту
             const data = {
-                action: 'get_user_data'
+                action: 'get_user_data',
+                timestamp: new Date().getTime()
             };
             
-            tg.sendData(JSON.stringify(data));
-            
-            // В реальном приложении данные придут через Telegram WebApp
-            // Для демо используем симуляцию
-            setTimeout(() => {
-                // Симуляция получения данных
-                updateUIWithData();
+            if (tg) {
+                tg.sendData(JSON.stringify(data));
+                setTimeout(() => {
+                    // Загрузка демо-данных, если ответ не пришел
+                    loadDemoData();
+                    showLoading(false);
+                }, 2000);
+            } else {
+                loadFromLocalStorage();
                 showLoading(false);
-            }, 500);
+            }
         }
-        
-        // Обновление UI с данными
-        function updateUIWithData() {
+
+        // Загрузка из localStorage
+        function loadFromLocalStorage() {
+            const saved = localStorage.getItem('coinKeeperData');
+            if (saved) {
+                try {
+                    userData = JSON.parse(saved);
+                    updateUI();
+                    showNotification('Данные загружены из памяти', false);
+                } catch (e) {
+                    console.error('Ошибка загрузки:', e);
+                    loadDemoData();
+                }
+            } else {
+                loadDemoData();
+            }
+        }
+
+        // Сохранение в localStorage
+        function saveToLocalStorage() {
+            localStorage.setItem('coinKeeperData', JSON.stringify(userData));
+        }
+
+        // Загрузка демо-данных
+        function loadDemoData() {
+            const demoTransactions = [
+                { 
+                    amount: 20000, 
+                    category: 'зарплата', 
+                    timestamp: new Date().toLocaleDateString('ru-RU', { 
+                        day: '2-digit', 
+                        month: '2-digit',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    }) 
+                },
+                { 
+                    amount: -500, 
+                    category: 'кофе', 
+                    timestamp: new Date().toLocaleDateString('ru-RU', { 
+                        day: '2-digit', 
+                        month: '2-digit',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    }) 
+                },
+                { 
+                    amount: -1500, 
+                    category: 'обед', 
+                    timestamp: new Date().toLocaleDateString('ru-RU', { 
+                        day: '2-digit', 
+                        month: '2-digit',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    }) 
+                }
+            ];
+            
+            userData.transactions = demoTransactions;
+            userData.balance = demoTransactions.reduce((sum, t) => sum + t.amount, 0);
+            userData.totalTransactions = demoTransactions.length;
+            userData.categories = {};
+            
+            // Создаем категории из транзакций
+            demoTransactions.forEach(t => {
+                if (!userData.categories[t.category]) {
+                    userData.categories[t.category] = 0;
+                }
+                userData.categories[t.category] += t.amount;
+            });
+            
+            updateUI();
+            saveToLocalStorage();
+        }
+
+        // Обновление UI
+        function updateUI() {
             // Обновляем баланс
             const balanceElement = document.getElementById('balance');
-            balanceElement.textContent = `${currentUserData.balance} ₽`;
+            balanceElement.textContent = `${formatNumber(userData.balance)} ₽`;
             
-            if (currentUserData.balance > 0) {
+            if (userData.balance > 0) {
                 balanceElement.className = 'balance-amount balance-positive';
-            } else if (currentUserData.balance < 0) {
+            } else if (userData.balance < 0) {
                 balanceElement.className = 'balance-amount balance-negative';
             } else {
                 balanceElement.className = 'balance-amount';
@@ -576,7 +825,7 @@
             let income = 0;
             let expense = 0;
             
-            currentUserData.transactions.forEach(transaction => {
+            userData.transactions.forEach(transaction => {
                 if (transaction.amount > 0) {
                     income += transaction.amount;
                 } else {
@@ -585,19 +834,19 @@
             });
             
             // Обновляем статистику
-            document.getElementById('total-income').textContent = `${income} ₽`;
-            document.getElementById('total-expense').textContent = `${expense} ₽`;
+            document.getElementById('total-income').textContent = `${formatNumber(income)} ₽`;
+            document.getElementById('total-expense').textContent = `${formatNumber(expense)} ₽`;
             
             // Обновляем список транзакций
             updateTransactionList();
         }
-        
+
         // Обновление списка транзакций
         function updateTransactionList() {
             const transactionList = document.getElementById('transactionList');
             const noTransactions = document.getElementById('noTransactions');
             
-            if (currentUserData.transactions.length === 0) {
+            if (userData.transactions.length === 0) {
                 noTransactions.style.display = 'block';
                 transactionList.innerHTML = '<li class="no-transactions">Нет операций. Добавьте первую!</li>';
                 return;
@@ -606,26 +855,34 @@
             noTransactions.style.display = 'none';
             
             // Показываем последние 10 транзакций в обратном порядке
-            const recentTransactions = [...currentUserData.transactions].reverse().slice(0, 10);
+            const recentTransactions = [...userData.transactions].reverse().slice(0, 10);
             
             let html = '';
-            recentTransactions.forEach(transaction => {
+            recentTransactions.forEach((transaction, index) => {
                 const isIncome = transaction.amount > 0;
                 const amount = Math.abs(transaction.amount);
-                const date = transaction.timestamp || new Date().toLocaleDateString('ru-RU');
+                const date = transaction.timestamp || new Date().toLocaleDateString('ru-RU', { 
+                    day: '2-digit', 
+                    month: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
                 
                 // Находим иконку категории
                 const category = categories.find(cat => cat.id === transaction.category.toLowerCase());
-                const categoryName = category ? category.name.split(' ')[1] : transaction.category;
+                const categoryName = category ? category.name : transaction.category;
+                const categoryIcon = category ? category.icon : '📌';
                 
                 html += `
                     <li class="transaction-item ${isIncome ? 'income' : 'expense'}">
                         <div class="transaction-info">
-                            <div class="transaction-category">${categoryName}</div>
+                            <div class="transaction-category">
+                                ${categoryIcon} ${categoryName}
+                            </div>
                             <div class="transaction-date">${date}</div>
                         </div>
                         <div class="transaction-amount ${isIncome ? 'income-amount' : 'expense-amount'}">
-                            ${isIncome ? '+' : '-'}${amount} ₽
+                            ${isIncome ? '+' : '-'}${formatNumber(amount)} ₽
                         </div>
                     </li>
                 `;
@@ -633,7 +890,12 @@
             
             transactionList.innerHTML = html;
         }
-        
+
+        // Форматирование чисел
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+        }
+
         // Переключение вкладок
         function switchTab(tabName) {
             currentTab = tabName;
@@ -642,7 +904,10 @@
             document.querySelectorAll('.tab').forEach(tab => {
                 tab.classList.remove('active');
             });
-            document.querySelectorAll('.tab')[getTabIndex(tabName)].classList.add('active');
+            
+            const tabElements = document.querySelectorAll('.tab');
+            const tabIndex = tabName === 'transactions' ? 0 : tabName === 'add' ? 1 : 2;
+            tabElements[tabIndex].classList.add('active');
             
             // Показываем/скрываем соответствующие секции
             document.getElementById('transactionsSection').style.display = 'none';
@@ -663,16 +928,7 @@
                     break;
             }
         }
-        
-        function getTabIndex(tabName) {
-            switch(tabName) {
-                case 'transactions': return 0;
-                case 'add': return 1;
-                case 'categories': return 2;
-                default: return 0;
-            }
-        }
-        
+
         // Установка типа транзакции
         function setTransactionType(type) {
             transactionType = type;
@@ -688,7 +944,7 @@
                 document.querySelector('.income-button').classList.add('active');
             }
         }
-        
+
         // Добавление транзакции
         function addTransaction() {
             const amountInput = document.getElementById('amount');
@@ -699,26 +955,13 @@
             
             if (!amount || amount <= 0) {
                 showNotification('Введите корректную сумму', true);
+                amountInput.focus();
                 return;
             }
             
-            // Подготавливаем данные для отправки
-            const transactionData = {
-                action: 'add_transaction',
-                amount: amount,
-                category: category,
-                type: transactionType,
-                date: new Date().toISOString()
-            };
-            
-            // Отправляем данные в Telegram бот
-            tg.sendData(JSON.stringify(transactionData));
-            
-            // Обновляем локальные данные (в реальном приложении обновим после ответа от бота)
+            // Создаем транзакцию
             const finalAmount = transactionType === 'expense' ? -amount : amount;
-            
-            currentUserData.balance += finalAmount;
-            currentUserData.transactions.push({
+            const newTransaction = {
                 amount: finalAmount,
                 category: category,
                 timestamp: new Date().toLocaleDateString('ru-RU', { 
@@ -727,28 +970,50 @@
                     hour: '2-digit',
                     minute: '2-digit'
                 })
-            });
-            currentUserData.totalTransactions++;
+            };
             
-            // Обновляем статистику категорий
-            if (!currentUserData.categories[category]) {
-                currentUserData.categories[category] = 0;
+            // Добавляем в данные
+            userData.transactions.push(newTransaction);
+            userData.balance += finalAmount;
+            userData.totalTransactions++;
+            
+            // Обновляем категории
+            if (!userData.categories[category]) {
+                userData.categories[category] = 0;
             }
-            currentUserData.categories[category] += finalAmount;
+            userData.categories[category] += finalAmount;
+            
+            // Сохраняем
+            saveToLocalStorage();
             
             // Обновляем UI
-            updateUIWithData();
+            updateUI();
+            
+            // Отправляем в бот, если в Telegram
+            if (tg) {
+                const transactionData = {
+                    action: 'add_transaction',
+                    amount: amount,
+                    category: category,
+                    type: transactionType,
+                    timestamp: new Date().toISOString()
+                };
+                
+                tg.sendData(JSON.stringify(transactionData));
+            }
             
             // Показываем уведомление
-            showNotification(`Операция добавлена: ${transactionType === 'expense' ? '-' : '+'}${amount} ₽`);
+            const typeText = transactionType === 'expense' ? 'Расход' : 'Доход';
+            showNotification(`${typeText} добавлен: ${formatNumber(amount)} ₽`);
             
             // Очищаем форму
             amountInput.value = '';
+            amountInput.focus();
             
             // Переключаемся на вкладку транзакций
             switchTab('transactions');
         }
-        
+
         // Настройка кнопок категорий
         function setupCategoryButtons() {
             const categoryList = document.getElementById('categoryList');
@@ -757,71 +1022,102 @@
             categories.forEach(category => {
                 html += `
                     <div class="category-item" onclick="selectCategory('${category.id}')">
-                        ${category.name}
+                        <div class="category-icon">${category.icon}</div>
+                        <div class="category-name">${category.name}</div>
                     </div>
                 `;
             });
             
             categoryList.innerHTML = html;
         }
-        
-        // Выбор категории при добавлении транзакции
+
+        // Выбор категории
         function selectCategory(categoryId) {
             document.getElementById('category').value = categoryId;
             switchTab('add');
+            showNotification(`Выбрана категория: ${categoryId}`, false);
         }
-        
-        // Изменение месяца (заглушка)
+
+        // Изменение месяца
         function changeMonth(delta) {
             // В будущем можно реализовать фильтрацию по месяцам
-            showNotification('Фильтрация по месяцам в разработке');
+            showNotification('Фильтрация по месяцам скоро появится!', false);
         }
-        
-        // Показать/скрыть индикатор загрузки
+
+        // Обновление текущего месяца
+        function updateCurrentMonth() {
+            const now = new Date();
+            const monthNames = [
+                'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
+                'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
+            ];
+            const monthName = monthNames[now.getMonth()];
+            const year = now.getFullYear();
+            
+            document.getElementById('currentMonth').textContent = `${monthName} ${year}`;
+        }
+
+        // Синхронизация с ботом
+        function syncWithBot() {
+            if (tg) {
+                showNotification('Синхронизация с ботом...', false);
+                loadUserDataFromBot();
+            } else {
+                showNotification('Не в Telegram', true);
+            }
+        }
+
+        // Показать/скрыть загрузку
         function showLoading(show) {
             document.getElementById('loading').style.display = show ? 'block' : 'none';
         }
-        
+
         // Показать уведомление
         function showNotification(message, isError = false) {
             const notification = document.getElementById('notification');
             notification.textContent = message;
-            notification.className = `notification ${isError ? 'error' : ''} show`;
+            notification.className = `notification ${isError ? 'error' : ''}`;
             
+            // Показываем
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+            
+            // Скрываем через 3 секунды
             setTimeout(() => {
                 notification.classList.remove('show');
             }, 3000);
         }
-        
-        // Для демонстрации: генерация тестовых данных
-        function generateDemoData() {
-            const demoTransactions = [
-                { amount: 50000, category: 'зарплата', timestamp: '01.01 09:00' },
-                { amount: -1500, category: 'еда', timestamp: '02.01 12:30' },
-                { amount: -500, category: 'транспорт', timestamp: '03.01 08:15' },
-                { amount: -3000, category: 'покупки', timestamp: '04.01 16:45' },
-                { amount: -1200, category: 'развлечения', timestamp: '05.01 20:00' }
-            ];
-            
-            currentUserData.transactions = demoTransactions;
-            currentUserData.balance = demoTransactions.reduce((sum, t) => sum + t.amount, 0);
-            currentUserData.totalTransactions = demoTransactions.length;
-            
-            // Создаем категории из транзакций
-            demoTransactions.forEach(t => {
-                if (!currentUserData.categories[t.category]) {
-                    currentUserData.categories[t.category] = 0;
+
+        // Обработчик сообщений от Telegram
+        function handleTelegramMessage(data) {
+            try {
+                const message = JSON.parse(data);
+                
+                if (message.action === 'update_data') {
+                    // Обновляем данные от бота
+                    userData = message.data;
+                    updateUI();
+                    saveToLocalStorage();
+                    showNotification('Данные синхронизированы с ботом', false);
                 }
-                currentUserData.categories[t.category] += t.amount;
-            });
+            } catch (e) {
+                console.error('Ошибка обработки сообщения:', e);
+            }
         }
-        
-        // Если приложение открыто не через Telegram, используем демо-данные
-        if (!window.Telegram?.WebApp?.initData) {
-            console.log('Приложение открыто не в Telegram, используем демо-режим');
-            generateDemoData();
-            updateUIWithData();
+
+        // Инициализация слушателя сообщений (для Telegram)
+        if (tg) {
+            // Telegram WebApp обрабатывает сообщения автоматически
+            console.log('Telegram WebApp инициализирован');
         }
+
+        // Добавляем обработчик нажатия Enter в поле суммы
+        document.getElementById('amount')?.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addTransaction();
+            }
+        });
     </script>
 </body>
 </html>
